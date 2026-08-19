@@ -9,8 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        .gallery-item { height: 250px; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-family: var(--font-heading); font-size: 1.25rem; transition: var(--transition-smooth); }
-        .gallery-item:hover { border-color: var(--accent-primary); transform: translateY(-3px); }
+        .gallery-item { width: 100%; height: 250px; object-fit: cover; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; transition: var(--transition-smooth); }
+        .gallery-item:hover { border-color: var(--accent-primary); transform: translateY(-3px); box-shadow: var(--shadow-subtle); }
     </style>
 </head>
 <body>
@@ -35,12 +35,12 @@
         <h1 class="section-title" style="text-align: center; margin-bottom: 3rem;">Visual Journey</h1>
         
         <div class="gallery-grid">
-            <div class="gallery-item" style="background: linear-gradient(135deg, #2d5a3e, #1c261e); color: #fff;">Garden Seating</div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #3a7550, #2c3e30); color: #fff;">Masor Tenga Prep</div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #1c261e, #0f1410); color: #fff;">Cozy Couple Table</div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #d4af37, #b5952f); color: #fff;">Assamese Thali</div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #4a5c4d, #27362a); color: #fff;">Evening Lighting</div>
-            <div class="gallery-item" style="background: linear-gradient(135deg, #2d5a3e, #1c261e); color: #fff;">Wood-Fired Pizza</div>
+            <img src="https://share.google/rCYKo0Jvg6ytEoyDL" alt="Garden Seating" class="gallery-item">
+            <img src="https://share.google/ibs0eLnHZVALujQDI" alt="Assamese Thali Details" class="gallery-item">
+            <img src="https://share.google/hdsaQDk62PwYO4xZo" alt="Cozy Couple Table" class="gallery-item">
+            <img src="https://share.google/aiJ9hCuiMQQwoQG6N" alt="Assamese Thali Spread" class="gallery-item">
+            <img src="https://share.google/RJKicPW0EEOdLKwKu" alt="Evening Lighting" class="gallery-item">
+            <img src="https://share.google/yTAUNbxXu2oe3DwwB" alt="Wood-Fired Pizza" class="gallery-item">
         </div>
     </main>
 
