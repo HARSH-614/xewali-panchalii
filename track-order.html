@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order | S. Baruah Foodyverse</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .form-control { width: 100%; padding: 1rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); font-family: var(--font-main); font-size: 1rem; }
+        .form-control:focus { outline: none; border-color: var(--accent-primary); }
+        .tracking-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 2.5rem; border-radius: 8px; max-width: 600px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo-brand">
+                <span class="logo-text">S. Baruah Foodyverse</span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">Full Menu</a>
+                <a href="order.html" class="nav-link">Order Online</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="icon-btn" id="theme-toggle">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 5rem 1.5rem; min-height: 70vh;">
+        
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <h1 class="section-title">Track Your Order</h1>
+            <p style="color: var(--text-secondary); margin-top: 0.5rem;">Enter your Order ID below to view the real-time status of your food.</p>
+        </div>
+
+        <div class="tracking-card">
+            <form id="trackOrderForm" style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                <input type="text" id="orderIdInput" class="form-control" required placeholder="e.g. SBFV-ORD-20260819-1234">
+                <button type="submit" class="btn btn-primary" style="white-space: nowrap; padding: 0 2rem;">Track Status</button>
+            </form>
+
+            <div id="trackingError" style="display: none; padding: 1rem; background-color: rgba(220, 53, 69, 0.1); border-left: 4px solid #dc3545; color: #dc3545; font-size: 0.9rem; border-radius: 4px;">
+                <!-- Error message injected here -->
+            </div>
+
+            <div id="trackingResult" style="display: none;">
+                <div id="orderDetailsUI" style="background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid var(--border-color);">
+                    <!-- Order details injected here -->
+                </div>
+
+                <div style="padding-left: 0.5rem;">
+                    <h4 style="margin-bottom: 1.5rem; font-family: var(--font-heading);">Live Progress</h4>
+                    <div id="statusTimeline">
+                        <!-- Timeline injected here -->
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); font-size: 0.85rem; color: var(--text-secondary); text-align: center;">
+                    <p>Live status relies on backend connectivity. If updates pause, please refresh or contact the restaurant directly via WhatsApp: +91 9678092519</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2026 S. Baruah Foodyverse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/order.js"></script>
+</body>
+</html>
