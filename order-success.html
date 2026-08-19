@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Successful | S. Baruah Foodyverse</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo-brand">
+                <span class="logo-text">S. Baruah Foodyverse</span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">Full Menu</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="icon-btn" id="theme-toggle">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 6rem 1.5rem; text-align: center; min-height: 65vh;">
+        <div style="width: 80px; height: 80px; background-color: var(--accent-primary); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 2rem;">
+            ✓
+        </div>
+        <h1 class="section-title" style="margin-bottom: 1rem;">Payment Successful!</h1>
+        <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">Thank you for your order. We are preparing your food.</p>
+        
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; max-width: 500px; margin: 0 auto 2rem;">
+            <p style="margin-bottom: 0.5rem; color: var(--text-secondary);">Order Reference</p>
+            <h2 id="successOrderId" style="font-family: var(--font-heading); color: var(--text-primary); margin-bottom: 0;">Loading...</h2>
+        </div>
+
+        <a href="track-order.html" class="btn btn-primary">Track Your Order</a>
+    </main>
+
+    <footer class="footer">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2026 S. Baruah Foodyverse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const orderId = params.get('id');
+            if(orderId) {
+                document.getElementById('successOrderId').textContent = orderId;
+            } else {
+                document.getElementById('successOrderId').textContent = "Unknown ID";
+            }
+        });
+    </script>
+</body>
+</html>
