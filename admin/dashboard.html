@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | S. Baruah Foodyverse</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="admin-brand">SBFV Admin</div>
+        <nav class="admin-nav" id="adminNav">
+            <a class="admin-nav-item active" data-target="overview">Overview</a>
+            <a class="admin-nav-item" data-target="orders">Live Orders</a>
+            <a class="admin-nav-item" data-target="reservations">Reservations</a>
+            <a class="admin-nav-item" data-target="menu">Menu Management</a>
+        </nav>
+        <div style="padding: 1.5rem; border-top: 1px solid var(--border-color);">
+            <button id="logoutBtn" class="btn btn-outline" style="width: 100%; border-color: #dc3545; color: #dc3545; font-size: 0.85rem;">Logout</button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <header class="admin-header">
+            <h2 id="pageTitle" style="font-size: 1.25rem;">Dashboard Overview</h2>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <span class="status-badge status-success">System Online</span>
+                <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-secondary);">Sajal Baruah</span>
+            </div>
+        </header>
+
+        <div class="admin-content">
+            
+            <!-- SECTION: Overview -->
+            <div id="overview" class="admin-section active">
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <h4>Today's Orders</h4>
+                        <div class="value">12</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Pending Orders</h4>
+                        <div class="value" style="color: #e6c547;">3</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Reservations Today</h4>
+                        <div class="value">4</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Today's Revenue</h4>
+                        <div class="value" style="color: var(--accent-primary);">₹4,250</div>
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 1rem; font-family: var(--font-heading);">Recent Action Required</h3>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Type</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="actionRequiredTable">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SECTION: Live Orders -->
+            <div id="orders" class="admin-section">
+                <h3 style="margin-bottom: 1.5rem; font-family: var(--font-heading);">Live Order Management</h3>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Time</th>
+                                <th>Customer</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SBFV-ORD-20260819-1234</td>
+                                <td>08:10 AM</td>
+                                <td>R. Sharma</td>
+                                <td>Delivery</td>
+                                <td><span class="status-badge status-action">Preparing</span></td>
+                            </tr>
+                            <tr>
+                                <td>SBFV-ORD-20260819-9876</td>
+                                <td>07:45 AM</td>
+                                <td>A. Das</td>
+                                <td>Dine-in (T-4)</td>
+                                <td><span class="status-badge status-success">Completed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">*Showing mock data. Connect to Phase 8 PostgreSQL for live feed.</p>
+            </div>
+
+            <!-- SECTION: Reservations -->
+            <div id="reservations" class="admin-section">
+                <h3 style="margin-bottom: 1.5rem; font-family: var(--font-heading);">Table Reservations</h3>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Customer</th>
+                                <th>Guests</th>
+                                <th>Seating</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Today, 19:00</td>
+                                <td>P. Gogoi (+91 9876543210)</td>
+                                <td>4</td>
+                                <td>Garden Seating</td>
+                                <td><span class="status-badge status-pending">Pending Review</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SECTION: Menu Management -->
+            <div id="menu" class="admin-section">
+                <h3 style="margin-bottom: 1.5rem; font-family: var(--font-heading);">Quick Availability Toggle</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Mark items as out of stock to instantly hide them from the frontend ordering system.</p>
+                <div class="data-table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Item Name</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Toggle Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>sbfv-001</td>
+                                <td>Traditional Masor Tenga</td>
+                                <td>₹240</td>
+                                <td><span class="status-badge status-success">In Stock</span></td>
+                                <td><button class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.75rem;">Mark Out of Stock</button></td>
+                            </tr>
+                            <tr>
+                                <td>sbfv-002</td>
+                                <td>Local Gahori Mankho</td>
+                                <td>₹320</td>
+                                <td><span class="status-badge status-pending">Out of Stock</span></td>
+                                <td><button class="btn btn-primary" style="padding: 0.25rem 0.75rem; font-size: 0.75rem;">Mark In Stock</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>
