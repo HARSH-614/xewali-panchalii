@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | S. Baruah Foodyverse</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary); }
+        .form-control { width: 100%; padding: 0.8rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); font-family: var(--font-main); }
+        .form-control:focus { outline: none; border-color: var(--accent-primary); }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo-brand">
+                <span class="logo-text">S. Baruah Foodyverse</span>
+            </a>
+            <a href="cart.html" class="nav-link">← Back to Cart</a>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 4rem 1.5rem; display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start;">
+        
+        <!-- Checkout Form -->
+        <div>
+            <h1 class="section-title" style="margin-bottom: 2rem;">Secure Checkout</h1>
+            <form id="checkoutForm">
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem; font-family: var(--font-heading);">Contact Information</h3>
+                    <div class="grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" id="fullName" class="form-control" required placeholder="Sajal Baruah">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" id="phone" class="form-control" required placeholder="+91 9876543210">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address *</label>
+                        <input type="email" id="email" class="form-control" required placeholder="name@example.com">
+                    </div>
+                </div>
+
+                <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1.5rem; font-family: var(--font-heading);">Order Details</h3>
+                    <div class="form-group">
+                        <label class="form-label">Order Type *</label>
+                        <select id="orderType" class="form-control" required>
+                            <option value="delivery">Home Delivery (Within 10 km)</option>
+                            <option value="pickup">Takeaway / Pickup</option>
+                            <option value="dine_in">Dine-in</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic Fields -->
+                    <div id="deliveryFields">
+                        <div class="form-group">
+                            <label class="form-label">Delivery Address *</label>
+                            <textarea id="address" class="form-control" rows="3" placeholder="House/Flat No, Street, Landmark"></textarea>
+                        </div>
+                        <div class="grid-2">
+                            <div class="form-group">
+                                <label class="form-label">PIN Code *</label>
+                                <input type="text" id="pincode" class="form-control" placeholder="784174">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pickupFields" style="display: none;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Your order will be prepared for pickup at our Pabhoi Panchali location.</p>
+                        <div class="form-group">
+                            <label class="form-label">Estimated Pickup Time</label>
+                            <input type="time" class="form-control">
+                        </div>
+                    </div>
+
+                    <div id="dineInFields" style="display: none;">
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Ordering directly to your table.</p>
+                        <div class="form-group">
+                            <label class="form-label">Table Number (If already seated)</label>
+                            <input type="text" class="form-control" placeholder="e.g. Garden-4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Special Instructions (Optional)</label>
+                        <input type="text" id="instructions" class="form-control" placeholder="Less spicy, extra cutlery, etc.">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.1rem; padding: 1rem;">Continue to Payment</button>
+            </form>
+        </div>
+
+        <!-- Checkout Summary -->
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; position: sticky; top: 100px;">
+            <h3 style="margin-bottom: 1.5rem; font-family: var(--font-heading); border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">Final Summary</h3>
+            
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="color: var(--text-secondary);">Subtotal</span>
+                <span id="checkoutSubtotal" style="font-weight: 600;">₹0.00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                <span style="color: var(--text-secondary);">Tax (5% GST)</span>
+                <span id="checkoutTax" style="font-weight: 600;">₹0.00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+                <span style="color: var(--text-secondary);">Delivery</span>
+                <span id="checkoutDelivery" style="font-weight: 600;">₹0.00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 1rem; margin-bottom: 1rem;">
+                <span style="font-size: 1.15rem; font-weight: 700;">Total to Pay</span>
+                <span id="checkoutTotal" style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary);">₹0.00</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary); text-align: center;">Payments are secure and encrypted. You will be asked for payment details on the next step.</p>
+        </div>
+
+    </main>
+
+    <script src="js/theme.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
