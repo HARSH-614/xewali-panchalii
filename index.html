@@ -6,11 +6,13 @@
     <title>S. Baruah Foodyverse | A Taste of Assam. A Journey Across India.</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- 1. Premium Navigation -->
     <header class="navbar">
         <div class="container navbar-container">
             <a href="index.html" class="logo-brand">
@@ -42,16 +44,241 @@
         </div>
     </header>
 
-    <main class="container" style="padding: 5rem 1.5rem; text-align: center;">
-        <h1 style="font-size: 3rem; margin-bottom: 1.5rem;" data-i18n="tagline">A Taste of Assam. A Journey Across India.</h1>
-        <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem;">Experience modern garden dining rooted in Assamese tradition and culinary excellence in Pabhoi Panchali.</p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="menu.html" class="btn btn-primary" data-i18n="exploreMenu">Explore Menu</a>
-            <a href="order.html" class="btn btn-outline" data-i18n="orderNow">Order Now</a>
-            <a href="reservation.html" class="btn btn-outline" data-i18n="reserveTable">Reserve a Table</a>
+    <!-- 2. Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <span class="hero-badge">Pabhoi Panchali, Biswanath, Assam</span>
+            <h1 class="hero-title" data-i18n="tagline">A Taste of Assam. A Journey Across India.</h1>
+            <p class="hero-subtitle">A premium modern restaurant born in Assam, blending serene garden dining with authentic Assamese heritage and exquisite pan-Indian flavors.</p>
+            <div class="hero-cta-group">
+                <a href="menu.html" class="btn btn-primary" data-i18n="exploreMenu">Explore Menu</a>
+                <a href="order.html" class="btn btn-outline" style="color: #fff; border-color: #fff;" data-i18n="orderNow">Order Now</a>
+                <a href="reservation.html" class="btn btn-outline" style="color: #fff; border-color: #fff;" data-i18n="reserveTable">Reserve a Table</a>
+            </div>
         </div>
-    </main>
+    </section>
 
+    <!-- 3. Restaurant Introduction -->
+    <section class="section-padding container">
+        <div class="grid-2">
+            <div>
+                <span class="section-subtitle">Welcome to S. Baruah Foodyverse</span>
+                <h2 class="section-title" style="margin-bottom: 1.5rem;">Where Nature Meets Culinary Craftsmanship</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">Founded by Sajal Baruah, S. Baruah Foodyverse is designed as an immersive sanctuary in Pabhoi Panchali. Set amidst lush greenery and open garden spaces with a cozy 25–28 guest capacity, we offer an intimate dining experience that celebrates local ingredients and culinary traditions.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Every dish is carefully prepared to evoke warmth, peace, and authenticity—bringing together the rich biodiversity of Assam and the diverse culinary legacy of India.</p>
+                <a href="about.html" class="btn btn-outline">Read Our Story</a>
+            </div>
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; text-align: center;">
+                <h3 style="margin-bottom: 1rem; font-family: var(--font-heading);">Quick Details</h3>
+                <ul style="text-align: left; color: var(--text-secondary); line-height: 2;">
+                    <li><strong>Location:</strong> Pabhoi Panchali, Biswanath, Assam</li>
+                    <li><strong>PIN:</strong> 784174</li>
+                    <li><strong>Concept:</strong> Restaurant + Garden Dining</li>
+                    <li><strong>Capacity:</strong> ~25–28 Guests</li>
+                    <li><strong>Phone:</strong> +91 6001950614</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Signature Dishes -->
+    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Culinary Masterpieces</span>
+                <h2 class="section-title">Signature Selections</h2>
+            </div>
+            <div class="grid-3">
+                <div class="card-luxury">
+                    <div class="card-img" style="background: linear-gradient(135deg, #3a7550, #1c261e); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-heading); font-size: 1.5rem;">Masor Tenga</div>
+                    <div class="card-content">
+                        <span class="badge-tag badge-signature">Signature Assamese</span>
+                        <h3>Traditional Masor Tenga</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.925rem; margin-bottom: 1.5rem;">Authentic tangy fish curry simmered with traditional herbs, elephant apple (outenga), and fresh local spices.</p>
+                        <a href="menu.html" class="btn btn-outline" style="width: 100%;">View in Menu</a>
+                    </div>
+                </div>
+                <div class="card-luxury">
+                    <div class="card-img" style="background: linear-gradient(135deg, #d4af37, #2d5a3e); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-heading); font-size: 1.5rem;">Gahori Mankho</div>
+                    <div class="card-content">
+                        <span class="badge-tag badge-signature">Local Favorite</span>
+                        <h3>Local Gahori Mankho</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.925rem; margin-bottom: 1.5rem;">Tender pork prepared with indigenous bamboo shoot and aromatic herbs true to Assamese heritage.</p>
+                        <a href="menu.html" class="btn btn-outline" style="width: 100%;">View in Menu</a>
+                    </div>
+                </div>
+                <div class="card-luxury">
+                    <div class="card-img" style="background: linear-gradient(135deg, #2d5a3e, #0f1410); display: flex; align-items: center; justify-content: center; color: #fff; font-family: var(--font-heading); font-size: 1.5rem;">Otenga Dal</div>
+                    <div class="card-content">
+                        <span class="badge-tag badge-signature">Vegetarian Special</span>
+                        <h3>Otenga Dal</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.925rem; margin-bottom: 1.5rem;">Comforting split lentil soup delicately flavored with tangy elephant apple slices and tempered spices.</p>
+                        <a href="menu.html" class="btn btn-outline" style="width: 100%;">View in Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 & 6. Assamese Culinary Story & Garden Experience -->
+    <section class="section-padding container">
+        <div class="grid-2">
+            <div>
+                <span class="section-subtitle">Roots & Environment</span>
+                <h2 class="section-title" style="margin-bottom: 1.5rem;">A Sanctuary of Greenery and Tradition</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.25rem;">Our restaurant is built around the concept of harmony with nature. Dining at S. Baruah Foodyverse means breathing in fresh country air surrounded by trees, plants, and natural sunlight.</p>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">We honor Assamese culture not merely through our menu, but through our architecture, hospitality, and peaceful open-air garden seating designed for families, couples, and friends.</p>
+                <a href="gallery.html" class="btn btn-primary">Explore Gallery</a>
+            </div>
+            <div class="grid-3" style="grid-template-columns: 1fr; gap: 1.5rem;">
+                <div class="feature-box" style="text-align: left; padding: 1.75rem;">
+                    <h3>🌱 Garden Dining</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.925rem;">Open-air tables immersed in nature with natural wood and stone textures.</p>
+                </div>
+                <div class="feature-box" style="text-align: left; padding: 1.75rem;">
+                    <h3>🍲 Authentic Recipes</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.925rem;">Time-tested recipes passed down through generations, crafted with local ingredients.</p>
+                </div>
+                <div class="feature-box" style="text-align: left; padding: 1.75rem;">
+                    <h3>🤝 Warm Hospitality</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.925rem;">Rooted in Assamese warmth, ensuring every guest feels welcomed like family.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Explore Indian Cuisine & Categories Preview -->
+    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Diverse Flavors</span>
+                <h2 class="section-title">A Journey Across India</h2>
+                <p style="color: var(--text-secondary); margin-top: 0.75rem;">From North-Eastern specialties to North, South, East, and West Indian favorites, plus continental and bakery delights.</p>
+            </div>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+                <span class="badge-tag">Assamese</span>
+                <span class="badge-tag">North-East</span>
+                <span class="badge-tag">North Indian</span>
+                <span class="badge-tag">South Indian</span>
+                <span class="badge-tag">Continental</span>
+                <span class="badge-tag">Pizza & Pasta</span>
+                <span class="badge-tag">Seafood</span>
+                <span class="badge-tag">Desserts & Beverages</span>
+            </div>
+            <div style="text-align: center;">
+                <a href="menu.html" class="btn btn-primary">Browse Full Menu & Categories</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. Dining Experiences -->
+    <section class="section-padding container">
+        <div class="section-header">
+            <span class="section-subtitle">Tailored Spaces</span>
+            <h2 class="section-title">Dining Experiences</h2>
+        </div>
+        <div class="grid-3">
+            <div class="feature-box">
+                <h3>Garden Seating</h3>
+                <p style="color: var(--text-secondary); font-size: 0.925rem;">Dine under the open sky amidst soothing greenery and natural ambiance.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Family & Group Dining</h3>
+                <p style="color: var(--text-secondary); font-size: 0.925rem;">Spacious arrangements curated for family gatherings and celebrations.</p>
+            </div>
+            <div class="feature-box">
+                <h3>Cozy Couple Tables</h3>
+                <p style="color: var(--text-secondary); font-size: 0.925rem;">Private, serene corners designed for quiet conversations and memorable meals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 & 12. Offers & Gallery Preview -->
+    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <span class="section-subtitle">Special Offers</span>
+                    <h2 class="section-title" style="margin-bottom: 1rem;">Garden Dining Specials</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Enjoy seasonal discounts on our Assamese thalis and weekend family gatherings. Check our offers page for current promotions.</p>
+                    <a href="offers.html" class="btn btn-outline">View All Offers</a>
+                </div>
+                <div>
+                    <span class="section-subtitle">Visual Journey</span>
+                    <h2 class="section-title" style="margin-bottom: 1rem;">Glimpse Into Our Sanctuary</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Explore photographs of our serene garden setting, culinary creations, and welcoming dining areas.</p>
+                    <a href="gallery.html" class="btn btn-outline">Open Gallery</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. Customer Reviews (Sample Demo Notice) -->
+    <section class="section-padding container">
+        <div class="section-header">
+            <span class="section-subtitle">Testimonials</span>
+            <h2 class="section-title">What Visitors Say</h2>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.5rem;">(Sample demonstration data for preview purposes)</p>
+        </div>
+        <div class="grid-3">
+            <div class="feature-box" style="text-align: left;">
+                <p style="color: var(--text-primary); font-style: italic; margin-bottom: 1.5rem;">"The Masor Tenga here is absolute perfection. Dining in the garden surrounded by greenery in Pabhoi is an unforgettable experience."</p>
+                <p style="font-weight: 600; font-size: 0.9rem;">- Local Resident, Biswanath</p>
+            </div>
+            <div class="feature-box" style="text-align: left;">
+                <p style="color: var(--text-primary); font-style: italic; margin-bottom: 1.5rem;">"A wonderful blend of Assamese hospitality and modern ambiance. The food quality and presentation are top-notch."</p>
+                <p style="font-weight: 600; font-size: 0.9rem;">- Visitor from Guwahati</p>
+            </div>
+            <div class="feature-box" style="text-align: left;">
+                <p style="color: var(--text-primary); font-style: italic; margin-bottom: 1.5rem;">"Such a peaceful atmosphere! Perfect for family dinner and tasting authentic traditional recipes."</p>
+                <p style="font-weight: 600; font-size: 0.9rem;">- Food Enthusiast</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14 & 15. Reservation & Order CTAs -->
+    <section class="section-padding" style="background: linear-gradient(135deg, var(--accent-primary), #1c261e); color: #fff; text-align: center;">
+        <div class="container" style="max-width: 800px;">
+            <span style="color: var(--accent-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 1rem;">Experience S. Baruah Foodyverse</span>
+            <h2 style="font-size: 2.75rem; margin-bottom: 1.5rem; color: #fff;">Ready to Dine With Us?</h2>
+            <p style="color: #e0e8e1; margin-bottom: 2.5rem; font-size: 1.1rem;">Reserve your garden table in advance or order your favorite meals online for pickup or home delivery within 10 km.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="reservation.html" class="btn" style="background-color: var(--accent-secondary); color: #1c261e; font-weight: 600;" data-i18n="reserveTable">Reserve a Table</a>
+                <a href="order.html" class="btn btn-outline" style="color: #fff; border-color: #fff;" data-i18n="orderNow">Order Online Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 16 & 17. Location & Contact -->
+    <section class="section-padding container">
+        <div class="grid-2">
+            <div>
+                <span class="section-subtitle">Find Us</span>
+                <h2 class="section-title" style="margin-bottom: 1.5rem;">Visit Our Restaurant & Garden</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;"><strong>Address:</strong> Pabhoi Panchali, PIN 784174, Biswanath, Assam, India</p>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;"><strong>Coordinates:</strong> 26.815454, 93.146444</p>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;"><strong>Phone / WhatsApp:</strong> +91 6001950614 / +91 9678092519</p>
+                <a href="https://maps.app.goo.gl/n6F2jUrZN6pnKtpM7" target="_blank" class="btn btn-primary">Open in Google Maps</a>
+            </div>
+            <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem;">
+                <h3 style="margin-bottom: 1rem;">Send an Inquiry</h3>
+                <form onsubmit="event.preventDefault(); alert('Thank you for your inquiry! We will get back to you shortly.');">
+                    <div style="margin-bottom: 1rem;">
+                        <input type="text" placeholder="Your Name" required style="width: 100%; padding: 0.75rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary);">
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <input type="tel" placeholder="Phone Number" required style="width: 100%; padding: 0.75rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary);">
+                    </div>
+                    <div style="margin-bottom: 1.25rem;">
+                        <textarea placeholder="Your Message or Inquiry" rows="4" required style="width: 100%; padding: 0.75rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 18. Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -59,6 +286,7 @@
                     <h4 data-i18n="brandName">S. Baruah Foodyverse</h4>
                     <p>Pabhoi Panchali, PIN 784174, Biswanath, Assam, India</p>
                     <p>Phone: +91 6001950614</p>
+                    <p>Email: sajalbaruah65@gmail.com</p>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
