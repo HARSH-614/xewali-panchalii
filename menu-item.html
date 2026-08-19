@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Details | S. Baruah Foodyverse</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages/home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo-brand">
+                <span class="logo-text" data-i18n="brandName">S. Baruah Foodyverse</span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link active">Full Menu</a>
+                <a href="order.html" class="nav-link">Order Online</a>
+                <a href="reservation.html" class="nav-link">Reservations</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="cart.html" class="icon-btn" title="Cart">🛒</a>
+                <button class="icon-btn" id="theme-toggle">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 4rem 1.5rem;" id="itemDetailContainer">
+        <!-- Dynamically loaded -->
+    </main>
+
+    <footer class="footer">
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2026 S. Baruah Foodyverse. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="data/menu.js"></script>
+    <script src="js/theme.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const container = document.getElementById('itemDetailContainer');
+            
+            const item = window.menuData.find(i => i.id === id);
+            if (!item) {
+                container.innerHTML = `<h2>Dish not found</h2><p><a href="menu.html">Return to Menu</a></p>`;
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="grid-2">
+                    <div style="background: linear-gradient(135deg, var(--accent-primary), #1c261e); height: 350px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-family: var(--font-heading); text-align: center; padding: 2rem;">
+                        ${item.name}
+                    </div>
+                    <div>
+                        <span class="badge-tag ${item.isSignature ? 'badge-signature' : ''}">${item.category} • ${item.state}</span>
+                        <h1 style="font-size: 2.5rem; margin: 0.75rem 0 1rem;">${item.name}</h1>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 1.5rem;">₹${item.price}</p>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">${item.description}</p>
+                        
+                        <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                            <p style="margin-bottom: 0.5rem;"><strong>Serving Size:</strong> ${item.servingSize}</p>
+                            <p style="margin-bottom: 0.5rem;"><strong>Spice Level:</strong> ${item.spiceLevel}</p>
+                            <p style="margin-bottom: 0.5rem;"><strong>Ingredients:</strong> ${item.ingredients.join(', ')}</p>
+                            <p><strong>Allergens:</strong> ${item.allergens.length > 0 ? item.allergens.join(', ') : 'None specified'}</p>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <input type="number" id="itemQty" value="1" min="1" max="10" style="width: 70px; padding: 0.75rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 4px; color: var(--text-primary); text-align: center; font-weight: 600;">
+                            <button onclick="addCurrentToCart('${item.id}')" class="btn btn-primary" style="flex: 1;">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        function addCurrentToCart(itemId) {
+            const item = window.menuData.find(i => i.id === itemId);
+            const qty = parseInt(document.getElementById('itemQty').value) || 1;
+            if (!item) return;
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const existing = cart.find(i => i.id === itemId);
+            if (existing) {
+                existing.quantity += qty;
+            } else {
+                cart.push({ id: item.id, name: item.name, price: item.price, quantity: qty });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${qty} x ${item.name} added to cart!`);
+        }
+    </script>
+</body>
+</html>
