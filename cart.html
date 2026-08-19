@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | S. Baruah Foodyverse</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo-brand">
+                <span class="logo-text">S. Baruah Foodyverse</span>
+            </a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="menu.html" class="nav-link">Full Menu</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="icon-btn" id="theme-toggle">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 4rem 1.5rem; min-height: 60vh;">
+        <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+            <h1 class="section-title">Your Cart</h1>
+        </div>
+
+        <div id="emptyCartMsg" style="text-align: center; padding: 4rem 0; display: none;">
+            <h2 style="margin-bottom: 1rem; color: var(--text-secondary);">Your cart is feeling light!</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-secondary);">Let's add some delicious Assamese and Indian dishes.</p>
+            <a href="menu.html" class="btn btn-primary">Browse Menu</a>
+        </div>
+
+        <div id="cartContent" style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; align-items: start;">
+            <!-- Cart Items List -->
+            <div>
+                <div id="cartItems" style="border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; margin-bottom: 1rem;">
+                    <!-- Items injected by cart.js -->
+                </div>
+                <button id="clearCartBtn" class="btn btn-outline" style="border-color: #dc3545; color: #dc3545;">Clear Cart</button>
+            </div>
+
+            <!-- Order Summary -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; position: sticky; top: 100px;">
+                <h3 style="margin-bottom: 1.5rem; font-family: var(--font-heading); border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">Order Summary</h3>
+                
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                    <span style="color: var(--text-secondary);">Subtotal</span>
+                    <span id="cartSubtotal" style="font-weight: 600;">₹0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                    <span style="color: var(--text-secondary);">Tax (5% GST)</span>
+                    <span id="cartTax" style="font-weight: 600;">₹0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 1.5rem;">
+                    <span style="color: var(--text-secondary);">Delivery Estimate</span>
+                    <span id="cartDelivery" style="font-weight: 600;">₹50.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-top: 1px solid var(--border-color); padding-top: 1rem; margin-bottom: 2rem;">
+                    <span style="font-size: 1.15rem; font-weight: 700;">Grand Total</span>
+                    <span id="cartTotal" style="font-size: 1.15rem; font-weight: 700; color: var(--accent-primary);">₹0.00</span>
+                </div>
+
+                <a href="checkout.html" class="btn btn-primary" style="width: 100%; text-align: center; display: block;">Proceed to Checkout</a>
+                <p style="text-align: center; font-size: 0.75rem; color: var(--text-secondary); margin-top: 1rem;">Taxes and shipping calculated at checkout.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/theme.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
