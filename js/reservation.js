@@ -1,89 +1,64 @@
-/**
- * Reservation & Private Booking Form Validation
- */
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('reservation-form');
-    const dateInput = document.getElementById('res-date');
-    const timeSelect = document.getElementById('res-time');
+    const reservationForm = document.getElementById('reservationForm');
+    const reservationUI = document.getElementById('reservationUI');
+    const confirmationUI = document.getElementById('confirmationUI');
     
-    // Prevent past dates
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
+    // Set minimum date to today
+    const dateInput = document.getElementById('resDate');
+    if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    }
 
-    // Dynamic Time Slot Generation based on config
-    function populateTimes() {
-        timeSelect.innerHTML = '';
-        const slots = [
-            "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", 
-            "6:00 PM", "6:30 PM", "7:00 PM", "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"
-        ];
-        slots.forEach(slot => {
-            const option = document.createElement('option');
-            option.value = slot;
-            option.textContent = slot;
-            timeSelect.appendChild(option);
+    if (reservationForm) {
+        reservationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Validate Phone Number
+            const phone = document.getElementById('resPhone').value;
+            if(!/^\d{10}$/.test(phone.replace(/\D/g,''))) {
+                alert("Please enter a valid 10-digit phone number.");
+                return;
+            }
+
+            // Gather data for future backend submission
+            const reservationData = {
+                id: `SBFV-RES-${Date.now()}`,
+                name: document.getElementById('resName').value,
+                phone: phone,
+                email: document.getElementById('resEmail').value,
+                date: document.getElementById('resDate').value,
+                time: document.getElementById('resTime').value,
+                guests: document.getElementById('resGuests').value,
+                seating: document.getElementById('resSeating').value,
+                specialRequests: document.getElementById('resRequests').value,
+                status: 'PENDING_VERIFICATION',
+                timestamp: new Date().toISOString()
+            };
+
+            // Simulate backend request (UI transition)
+            const submitBtn = reservationForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending Request...';
+            submitBtn.disabled = true;
+
+            setTimeout(() => {
+                // Hide form and show confirmation message
+                reservationUI.style.display = 'none';
+                confirmationUI.style.display = 'block';
+                
+                // Populate confirmation details
+                document.getElementById('confId').textContent = reservationData.id;
+                document.getElementById('confDetails').innerHTML = `
+                    <strong>Date:</strong> ${reservationData.date} <br>
+                    <strong>Time:</strong> ${reservationData.time} <br>
+                    <strong>Guests:</strong> ${reservationData.guests} <br>
+                    <strong>Seating:</strong> ${reservationData.seating.replace('_', ' ').toUpperCase()}
+                `;
+
+                // Optionally save to sessionStorage for persistence during the session
+                sessionStorage.setItem('lastReservationRequest', JSON.stringify(reservationData));
+            }, 800);
         });
     }
-    populateTimes();
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Generate Fictional Reference
-        const ref = `XEWALI-RSV-${Math.floor(1000 + Math.random() * 9000)}`;
-        
-        form.classList.add('hidden');
-        document.getElementById('res-ref').textContent = ref;
-        document.getElementById('res-success').classList.remove('hidden');
-        
-        window.showToast("Reservation request simulated successfully.");
-    });
-
-    // Private Booking Modal Logic
-    document.getElementById('open-private-modal').addEventListener('click', () => {
-        const body = document.getElementById('universal-modal-body');
-        body.innerHTML = `
-            <div style="padding: 2rem;">
-                <h3 class="mb-2">Private Event Inquiry</h3>
-                <form id="private-event-form">
-                    <div class="form-grid">
-                        <div class="input-group mb-1">
-                            <label>Name</label>
-                            <input type="text" required>
-                        </div>
-                        <div class="input-group mb-1">
-                            <label>Contact Number</label>
-                            <input type="tel" required>
-                        </div>
-                        <div class="input-group mb-1">
-                            <label>Event Type</label>
-                            <select required>
-                                <option>Birthday</option>
-                                <option>Corporate</option>
-                                <option>Family Gathering</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div class="input-group mb-1">
-                            <label>Estimated Guests</label>
-                            <input type="number" min="10" required placeholder="Minimum 10">
-                        </div>
-                    </div>
-                    <div class="input-group full-width mt-1 mb-2">
-                        <label>Additional Details</label>
-                        <textarea rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Send Inquiry (Demo)</button>
-                </form>
-            </div>
-        `;
-        document.getElementById('universal-modal').classList.add('active');
-        document.getElementById('overlay').classList.add('active');
-
-        document.getElementById('private-event-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            document.getElementById('close-universal-modal').click();
-            window.showToast("Private booking inquiry sent!");
-        });
-    });
 });
