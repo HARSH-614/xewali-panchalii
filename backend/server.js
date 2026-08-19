@@ -1,38 +1,16 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
-require('dotenv').config();
+// ... existing imports ...
+const paymentRoutes = require('./routes/paymentRoutes');
 
-const orderRoutes = require('./routes/orderRoutes');
+// ... existing middleware ...
 
-const app = express();
+// Special condition: Webhooks often need the raw request body to verify cryptographic signatures
+// We must mount the webhook BEFORE the global express.json() parser intercepts it.
+app.use('/api/payment/webhook', paymentRoutes); 
 
-// Security Middleware
-app.use(helmet());
-app.use(cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
-}));
-
-// Body Parsing Middleware
-app.use(express.json());
+app.use(express.json()); // Global JSON parser
 
 // Routes
 app.use('/api/orders', orderRoutes);
+app.use('/api/payment', paymentRoutes); // Mount remaining payment routes
 
-// Health Check Endpoint
-app.app.get('/api/health', (req, res) => {
-    res.status(200).json({ status: 'OK', message: 'S. Baruah Foodyverse Backend is running.' });
-});
-
-// Global Error Handler
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ error: 'Internal Server Error' });
-});
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server running securely on port ${PORT}`);
-});
+// ... existing error handler and listen block ...
